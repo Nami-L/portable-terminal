@@ -1,0 +1,7 @@
+image:
+    file: .gitpod.dockerfile
+
+tasks:
+  - name: welcome-message
+    command: |
+      echo "Welcome to portable-terminal"
