@@ -17,10 +17,10 @@ RUN sudo apt-get install -y gnuplot
 RUN sudo apt-get install -y texlive-full
 
 # Install Neovim 
-RUN sudo apt-get install software-properties-common
+RUN sudo apt-get install -y software-properties-common
 RUN sudo add-apt-repository ppa:neovim-ppa/unstable
 RUN sudo apt-get update
-RUN sudo apt-get install neovim
+RUN sudo apt-get install -y neovim
 
 # Install Neovim extras
 RUN sudo apt-get install -y ripgrep fd-find xclip
