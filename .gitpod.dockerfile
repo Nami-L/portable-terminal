@@ -18,7 +18,7 @@ RUN sudo apt-get install -y texlive-full
 
 # Install Neovim
 RUN wget https://github.com/neovim/neovim/releases/download/v0.10.2/nvim-linux64.tar.gz \
-    $$ tar -xzf nvim-linux64.tar.gz \
+    && tar -xzf nvim-linux64.tar.gz \
     && mv nvim-linux64/bin/nvim /usr/local/bin/ \
     && rm -rf nvim-linux64.tar.gz nvim-linux64
 
