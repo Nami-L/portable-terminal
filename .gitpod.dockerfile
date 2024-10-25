@@ -16,11 +16,12 @@ RUN sudo apt-get install -y gnuplot
 # Install LaTeX
 RUN sudo apt-get install -y texlive-full
 
-# Install Neovim 
-RUN sudo apt-get install -y software-properties-common
-RUN sudo add-apt-repository ppa:neovim-ppa/unstable
-RUN sudo apt-get update
-RUN sudo apt-get install -y neovim
+# Install Neovim
+RUN wget https://github.com/neovim/neovim/releases/download/v0.10.2/nvim-linux64.tar.gz \
+    && tar -xzf nvim-linux64.tar.gz \
+    && mv nvim-linux64 $HOME/.local/bin \
+    && ln -s $HOME/.local/bin/nvim-linux64/bin/nvim $HOME/.local/bin/nvim \
+    && rm -rf nvim-linux64.tar.gz nvim-linux64
 
 # Install Neovim extras
 RUN sudo apt-get install -y ripgrep fd-find xclip
@@ -29,7 +30,7 @@ RUN sudo apt-get install -y ripgrep fd-find xclip
 RUN echo "alias fd='fdfind'" >> ~/.bashrc
 
 # Clone Neovim files
-RUN git clone https://github.com/cirofabianbermudez/nvim.git $HOME/.config/nvim
+RUN git clone https://github.com/cirofabianbermudez/nvim.git /home/gitpod/.config/nvim
 
 # Clen up unnecessary files
 RUN sudo rm -rf /var/lib/apt/lists/*
