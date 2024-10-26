@@ -26,8 +26,14 @@ RUN wget https://github.com/neovim/neovim/releases/download/v0.10.2/nvim-linux64
 # Install Neovim extras
 RUN sudo apt-get install -y ripgrep fd-find xclip
 
+# Install z -jump around
+RUN git clone https://github.com/rupa/z.git \
+    && mv z/z.sh $HOME/.local/bin \
+    && rm -rf z
+
 # Alias
 RUN echo "alias fd='fdfind'" >> ~/.bashrc
+RUN echo "source $HOME/.local/bin/z.sh" >> ~/.bashrc
 
 # Clone Neovim files
 RUN git clone https://github.com/cirofabianbermudez/nvim.git /home/gitpod/.config/nvim
